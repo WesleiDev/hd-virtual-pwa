@@ -1,13 +1,21 @@
-import { app } from './firebase';
+import  fileListComponent  from './files_list'
+import  templateComponent  from './template'
+import  uploaderComponent  from './uploader'
+
+
+const components = [
+    templateComponent,
+    fileListComponent,
+    uploaderComponent
+]
 
 class Init{
     constructor(){
-        let component = require('./template/')
-        let elementApp = document.getElementById('app');
-        elementApp.innerHTML =  component.template;
-        component.action();
-
-        console.log(app)
+        components.forEach((component) =>{
+            let element = document.querySelector(component.el);
+            element.innerHTML =  component.template;
+            component.afterBind();
+        })
     }
 
 
