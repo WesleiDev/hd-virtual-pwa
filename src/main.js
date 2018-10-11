@@ -1,6 +1,11 @@
+require('./style.scss');
+
 class Init{
     constructor(){
-        console.log('Olá mundo')
+        let component = require('./template/')
+        let app = document.getElementById('app');
+        app.innerHTML =  component.template;
+        component.action();
     }
 }
 
