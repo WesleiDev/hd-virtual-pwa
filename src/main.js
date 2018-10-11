@@ -1,12 +1,16 @@
-require('./style.scss');
+import { app } from './firebase';
 
 class Init{
     constructor(){
         let component = require('./template/')
-        let app = document.getElementById('app');
-        app.innerHTML =  component.template;
+        let elementApp = document.getElementById('app');
+        elementApp.innerHTML =  component.template;
         component.action();
+
+        console.log(app)
     }
+
+
 }
 
 new Init();
