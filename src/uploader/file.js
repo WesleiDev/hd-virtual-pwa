@@ -10,28 +10,44 @@ export default function(){
         }
     })
 
+    console.log(app)
     console.log(path)
     let fileInput = document.getElementById('file');
     fileInput.click();
 
-    fileInput.addEventListener('change', function(e){
-        console.log(e.target.files[0])
-
+    //esta variavel urlDownload foi para corrigir um bug do firebase que não consegui resolver
+    let urlDownload = ""; 
+    let uploadFile = function(e){
         const storageRef =  app.storage().ref();
         let fileRef = storageRef.child('files/1/'+path+ e.target.files[0].name);
-        fileRef.put(fileInput.files[0])
+        let uploadTask = fileRef.put(fileInput.files[0])
+        
         .then((snapshot) =>{
-            let folderRef = app.database().ref('files/1'+path);
-            folderRef.push({
-                title: fileInput.files[0].name,
-                type: 'file',
-                url: 'sdsd'
+            urlDownload = "";
+      
+            snapshot.ref.getDownloadURL().then(function(downloadURL){
+                if(urlDownload !== downloadURL){
+                    let folderRef = app.database().ref('files/1'+path);
+                    folderRef.push({
+                        title: fileInput.files[0].name,
+                        type: 'file',
+                        url: downloadURL
+                    })
+
+                    urlDownload = downloadURL;
+                    console.log(downloadURL)
+                }
+                
             })
-                console.log(snapshot);
+              
         }).catch((err) =>{
             console.log('Erro ao realizar upload de arquivo: ', err)
         })
 
-    })
+        
+    }
+
+    fileInput.addEventListener('change', uploadFile)
+
 
 }
