@@ -35,7 +35,8 @@ export default function(snapshot){
         html += partial
         .replace(/{{ title }}/g, data[index][1].title)
         .replace(/{{ type }}/g, data[index][1].type)
-        .replace(/{{ fid }}/g, data[index][0]);
+        .replace(/{{ fid }}/g, data[index][0])
+        .replace(/{{ url }}/g, data[index][1].url);
     }
 
     document.querySelector('#main .files').innerHTML = html;
