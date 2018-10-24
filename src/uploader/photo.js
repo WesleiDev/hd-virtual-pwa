@@ -1,8 +1,12 @@
 import uploader from './utils/uploader';
 require('./photo/style.scss');
 
-let template = require('./photo/template.html');
-document.querySelector('body').innerHTML += template;
+
+let template = document.createElement('template');
+template.innerHTML = require('./photo/template.html');
+template = template.content.childNodes;
+document.querySelector('body').appendChild(template[0])
+
 let streamVideo;
 
 const startVideo = function(id){
@@ -40,10 +44,11 @@ const startVideo = function(id){
     navigator.getUserMedia(config, success, (err) => console.log(err))
 }
 
-let photoModal = document.getElementById('photo');
+
 
 document.getElementById('photo-cancel').addEventListener('click', function(e){
     e.preventDefault();
+    let photoModal = document.getElementById('photo');
     photoModal.className = "modal";
 
     let video = document.querySelector('#photo-viewer video');
@@ -101,6 +106,8 @@ navigator.mediaDevices.enumerateDevices().then((devices) =>{
 
 export default function(){
     
+    let photoModal = document.getElementById('photo');
+    console.log('MODAL',photoModal)
     photoModal.className = "modal open";
 
 }
