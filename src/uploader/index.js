@@ -1,5 +1,7 @@
 import file from './file';
 import folder from './folder';
+import photo from './photo';
+import audio from './audio';
 
 export default {
     el: '#footer',
@@ -24,10 +26,10 @@ export default {
                             folder();
                             break;
                         case 'photo':
-                            console.log('Tira foto')
+                            photo();
                             break;
                         case 'audio':
-                            console.log('Grava audio')
+                            audio();
                             break;
                         case 'note':
                             console.log('Cria anotação')
