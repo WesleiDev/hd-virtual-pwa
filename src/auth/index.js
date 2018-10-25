@@ -1,5 +1,5 @@
 import { app } from '../firebase';
-import {authCreateEmail} from './auth/email';
+import {authCreateEmail, authEmail} from './auth/email';
 import { UserClass } from './user';
 import  fileListComponent from '../files_list'
 
@@ -31,7 +31,7 @@ export default {
 
                 document.querySelector('#auth-email').addEventListener('click', function(e){
                     e.preventDefault();
-                    console.log('Login')
+                    authEmail();
 
                 })
 
