@@ -77,7 +77,6 @@ navigator.mediaDevices.enumerateDevices().then((devices) =>{
         }
     })
 
-    console.log(options)
 
     let menuCamera = document.querySelector('#photo-choice .menu-camera');
     let partialTemplate = menuCamera.innerHTML;
