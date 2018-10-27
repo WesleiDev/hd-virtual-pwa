@@ -23,6 +23,12 @@ export default {
                 const auth = document.getElementById('auth');
                 fileListComponent.afterBind();
                 auth.className = 'modal'; 
+
+                const sha1 = require('js-sha1');
+
+                //Adicionando usuário em uma lista para poder compartilhar com ele depois
+                let ref = app.database().ref('/sharer/'+sha1(user.email));
+                ref.set(user.uid)
                 
 
             }else{

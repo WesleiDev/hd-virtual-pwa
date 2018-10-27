@@ -18,8 +18,21 @@ class Init{
             }        
             component.afterBind();
         })
+
+        //Registra o service worker somente se estivem em ambiente de dev, comforme configuração
+        //do webpack.prod.config.js e packge.json (npm run build)
+        if(process.env.NODE_ENV === 'production'){
+            this.registerSw();
+        }
     }
 
+    registerSw(){
+    if('serviceWorker' in navigator){
+        navigator.serviceWorker.register('./service-worker.js')
+    }
+
+
+}
 
 }
 

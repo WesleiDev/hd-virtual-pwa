@@ -6,8 +6,9 @@
   "scripts": {
     "start": "npm run server",
     "server": "webpack-dev-server --mode=development",
-    "dev": "webpack --mod=deveolopment",
-    "watch": "webpack --mod=deveolopment --watch=true",
+    "dev": "webpack --mode=development",
+    "build": "webpack --mode=production --config=webpack.prod.config.js",
+    "watch": "webpack --mode=deveolopment --watch=true",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,18 +19,24 @@
     "babel-loader": "^7.1.5",
     "babel-preset-es2015": "^6.24.1",
     "firebase": "^5.5.3",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "js-sha1": "^0.6.0"
   },
   "devDependencies": {
+    "compression-webpack-plugin": "^2.0.0",
+    "copy-webpack-plugin": "^4.5.4",
     "css-loader": "^1.0.0",
     "file-loader": "^2.0.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.9.3",
+    "rimraf": "^2.6.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.9"
+    "webpack-dev-server": "^3.1.9",
+    "webpack-merge": "^4.1.4",
+    "workbox-webpack-plugin": "^3.6.3"
   }
 }

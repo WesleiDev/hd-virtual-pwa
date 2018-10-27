@@ -1,3 +1,6 @@
+import sharer from './share';
+import  './sharedList';
+
 require('./style.scss');
 require('font-awesome/css/font-awesome.css');
 require('./usage.js');
@@ -36,6 +39,11 @@ export default  {
         };
 
         openMenu.addEventListener('click', openMenuEvent)
+
+        document.getElementById('addSharer').addEventListener('submit', function(e){
+            e.preventDefault();
+            sharer(document.getElementById('addSharerInput').value)
+        })
 
         
     }
